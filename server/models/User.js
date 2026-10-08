@@ -1,0 +1,41 @@
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
+
+const User = sequelize.define(
+  "User",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    role: {
+      type: DataTypes.ENUM("admin","employee"),
+      allowNull:false,
+      defaultValue: "employee",
+    },
+
+    status: {
+      type: DataTypes.ENUM("active", "inactive"),
+      defaultValue: "active",
+    },
+  },
+  {
+    tableName: "users",
+    timestamps: true,
+  }
+);
+
+module.exports = User;
