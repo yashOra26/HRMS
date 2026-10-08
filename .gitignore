@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Build files
+dist/
+build/
+.next/
+out/
+
+# Coverage
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local database / data files
+*.sqlite
+*.sqlite3
+
+# Secrets / certificates
+*.pem
+*.key
+
+# Vite
+.vite/

@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv").config();
 
-dotenv.config();
+const sequelize = require("./config/db");
 
 const app = express();
 app.use(cors());
@@ -12,9 +12,17 @@ app.get("/",(req,res)=>{
   res.send("HR MANAGEMENT SYSTEM API");
 });
 
-const PORT = process.env.PORT ||  5000;
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("PostgreSQL connected successfully");
 
+    const PORT = process.env.PORT || 5000;
 
-app.listen(PORT,()=>{
-    console.log(`Server is Running On ${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("PostgreSQL connection failed:", error);
+  });
